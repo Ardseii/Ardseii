@@ -1,0 +1,25 @@
+--owner is the Player instance of whoever it's going to follow (Disregard this comment if you're going to use it in Void SB)
+
+local toilet = Instance.new("Part", script)
+toilet.Size = Vector3.new(1,1,1)
+toilet.Position = owner.Character.HumanoidRootPart.Position + Vector3.new(0, 20, 0)
+toilet.Anchored = true
+
+local bright = Instance.new("PointLight", toilet)
+bright.Brightness = 2^63
+bright.Range = 10
+
+local toiletmesh = Instance.new("SpecialMesh", toilet)
+toiletmesh.MeshId = "rbxassetid://5888445829"
+toiletmesh.TextureId = "rbxassetid://5888445881"
+
+local polish = Instance.new("Sound", toilet)
+polish.Volume = 5
+polish.Looped = true
+polish.SoundId = "rbxassetid://5123974898"
+polish:Play()
+
+while task.wait() do
+	toilet.Orientation += Vector3.new(0, 10)
+	toilet.Position = toilet.Position:Lerp(owner.Character.HumanoidRootPart.Position + Vector3.new(0, 20, 0), .1)
+end
